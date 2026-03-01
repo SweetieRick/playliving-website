@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayLiving Discord</title>
+    <meta name="title" content="Join the PlayLiving Discord">
+    <meta name="description" content="Click here to connect with the community and join our game servers">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://playliving.lol/">
+    <meta property="og:title" content="Join the PlayLiving Discord">
+    <meta property="og:description" content="Welcome to The Living Room 🛋 — a spot for gaming, football, and whatever else is worth talking about. Come hang out, chill, and join the chaos">
+    <meta property="og:image" content="https://cdn.discordapp.com/icons/1412007729207185502/6cb8ec67ee5708c98d139ada0d2d6605.png?size=4096">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://playliving.lol/">
+    <meta property="twitter:title" content="Join the PlayLiving Discord">
+    <meta property="twitter:description" content="Welcome to The Living Room 🛋 — a spot for gaming, football, and whatever else is worth talking about. Come hang out, chill, and join the chaos">
+    <meta property="twitter:image" content="https://cdn.discordapp.com/icons/1183011384918749184/a_6c6f6f6f6f6f6f6f6f6f6f6f6f6f6f6f.png">
+    
+    <meta name="theme-color" content="#5865F2">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Navbar CSS */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #1a1a1a;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Anchor items to the left */
+            border-radius: 25px;
+            padding: 0 5px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 140px; 
+            border: 1px solid #333;
+            z-index: 1000;
+            overflow: visible; /* Allow toggle button to remain visible */
+        }
+
+        /* Shrink width causes the arrow button to slide left */
+        .navbar.collapsed { width: 50px; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; 
+            padding-left: 10px;
+            width: 85px; 
+            transition: opacity 0.2s, transform 0.3s;
+            overflow: hidden; /* Hide links when collapsed */
+        }
+
+        .navbar.collapsed .nav-links {
+            opacity: 0;
+            transform: translateX(-20px);
+            pointer-events: none;
+            width: 0;
+            padding-left: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .home-btn svg { fill: #2ecc71; width: 24px; height: 24px; }
+        .folder-btn svg { fill: #ffffff; width: 24px; height: 24px; }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            flex-shrink: 0; /* Prevents button from squishing */
+        }
+
+        .toggle-btn svg { 
+            fill: #888; 
+            width: 18px; 
+            transition: transform 0.3s; 
+        }
+
+        /* Arrow rotation logic */
+        .navbar.collapsed .toggle-btn svg { transform: rotate(180deg); }
+
+        /* Container & Discord Button CSS */
+        .container { text-align: center; }
+        h1 { font-weight: 400; margin-bottom: 25px; letter-spacing: 1px; }
+        .discord-button {
+            background-color: #5865F2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .discord-button:hover { background-color: #4752c4; }
+        .discord-button:active { transform: scale(0.98); }
+        .discord-logo { width: 30px; height: 30px; margin-right: 15px; fill: currentColor; }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="mainNavbar">
+        <div class="nav-links">
+            <a href="/" class="nav-item home-btn" title="Home">
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </a>
+            <a href="/files/" class="nav-item folder-btn" title="Files">
+                <svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+            </a>
+        </div>
+        <button class="toggle-btn" onclick="toggleNavbar()">
+            <svg id="arrowIcon" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+        </button>
+    </nav>
+
+    <div class="container">
+        <h1>The Living Room</h1>
+        <a href="https://discord.gg/umaADedbBm" class="discord-button">
+            <svg class="discord-logo" viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.39,80.21a105.73,105.73,0,0,0,32.25,16.15,77.7,77.7,0,0,0,7.37-12,67.48,67.48,0,0,1-11.75-5.63c.97-.7,1.94-1.44,2.87-2.21a74.14,74.14,0,0,0,64.78,0c.93.77,1.9,1.51,2.87,2.21a67.4,67.4,0,0,1-11.75,5.63,77.91,77.91,0,0,0,7.37,12,105.9,105.9,0,0,0,32.29-16.15C129.5,50.55,125.83,26.89,117.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.07,65.69,84.69,65.69Z"/>
+            </svg>
+            Join the Discord
+        </a>
+    </div>
+
+    <script>
+        function toggleNavbar() {
+            document.getElementById('mainNavbar').classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
