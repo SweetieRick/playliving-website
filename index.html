@@ -171,16 +171,16 @@
         
         .button-wrapper {
             position: absolute;
-            top: 35px;
+            top: 85px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            animation: sitting-idle 3s ease-in-out infinite;
+            animation: sitting-idle 4s ease-in-out infinite;
         }
         
         @keyframes sitting-idle {
-            0%, 100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
-            50% { transform: translateX(-50%) translateY(-3px) rotate(1deg); }
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(-0.5deg); }
+            50% { transform: translateX(-50%) translateY(-2px) rotate(0.5deg); }
         }
         
         .button-shadow {
@@ -243,7 +243,7 @@
                 height: 180px;
             }
             .button-wrapper {
-                top: 35px;
+                top: 55px;
             }
             .discord-button {
                 padding: 12px 20px;
