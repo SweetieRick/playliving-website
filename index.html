@@ -346,6 +346,216 @@
                 height: 150px;
             }
         }
+
+        /* Server Status Sidebar */
+        .server-sidebar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 25px;
+            padding: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 200px;
+            height: 50px;
+            z-index: 1000;
+            overflow: visible;
+        }
+
+        .server-sidebar.collapsed {
+            width: 50px;
+        }
+
+        .sidebar-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-right: 10px;
+            transition: opacity 0.2s, transform 0.3s;
+            overflow: hidden;
+        }
+
+        .server-sidebar.collapsed .sidebar-content {
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+            width: 0;
+            padding-right: 0;
+        }
+
+        .sidebar-toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-toggle-btn svg {
+            fill: #888;
+            width: 18px;
+            transition: transform 0.3s;
+        }
+
+        .server-sidebar.collapsed .sidebar-toggle-btn svg {
+            transform: rotate(180deg);
+        }
+
+        /* Server Card */
+        .server-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #0f0f0f;
+            border-radius: 12px;
+            padding: 6px 12px;
+        }
+
+        .status-indicator {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 3px solid #2ecc71;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f0f;
+            transition: border-color 0.3s ease;
+        }
+
+        .status-indicator.offline {
+            border-color: #e74c3c;
+        }
+
+        .status-indicator.checking {
+            border-color: #f39c12;
+        }
+
+        .status-led {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2ecc71;
+            box-shadow: 0 0 10px #2ecc71, 0 0 20px #2ecc71, 0 0 30px #2ecc71;
+            animation: led-pulse 1.5s ease-in-out infinite;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .status-led.offline {
+            background: #e74c3c;
+            box-shadow: 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 30px #e74c3c;
+            animation: led-pulse-red 1.5s ease-in-out infinite;
+        }
+
+        .status-led.checking {
+            background: #f39c12;
+            box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12, 0 0 30px #f39c12;
+            animation: led-pulse-yellow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes led-pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px #2ecc71, 0 0 20px #2ecc71, 0 0 30px #2ecc71;
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(0.9);
+                box-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71, 0 0 15px #2ecc71;
+            }
+        }
+
+        @keyframes led-pulse-red {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 30px #e74c3c;
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(0.9);
+                box-shadow: 0 0 5px #e74c3c, 0 0 10px #e74c3c, 0 0 15px #e74c3c;
+            }
+        }
+
+        @keyframes led-pulse-yellow {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+                box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12, 0 0 30px #f39c12;
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(0.9);
+                box-shadow: 0 0 5px #f39c12, 0 0 10px #f39c12, 0 0 15px #f39c12;
+            }
+        }
+
+        .status-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .status-label {
+            font-size: 0.65rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-value {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2ecc71;
+            transition: color 0.3s ease;
+        }
+
+        .status-value.offline {
+            color: #e74c3c;
+        }
+
+        .status-value.checking {
+            color: #f39c12;
+        }
+
+        @media (max-width: 600px) {
+            .server-sidebar {
+                bottom: 15px;
+                right: 15px;
+                width: 180px;
+                height: 45px;
+            }
+            .server-sidebar.collapsed {
+                width: 45px;
+            }
+            .server-card {
+                padding: 4px 10px;
+                gap: 8px;
+            }
+            .status-indicator {
+                width: 26px;
+                height: 26px;
+            }
+            .status-led {
+                width: 10px;
+                height: 10px;
+            }
+            .status-label {
+                font-size: 0.55rem;
+            }
+            .status-value {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -535,6 +745,93 @@
         function toggleNavbar() {
             document.getElementById('mainNavbar').classList.toggle('collapsed');
         }
+
+        function toggleSidebar() {
+            document.getElementById('serverSidebar').classList.toggle('collapsed');
+        }
+
+        // Hytale Server Status Checker (DNS resolution only)
+        const SERVER_ADDRESS = 'hytale.playliving.lol';
+        const CHECK_INTERVAL = 30000; // Check every 30 seconds
+
+        async function checkServerStatus() {
+            const indicator = document.getElementById('statusIndicator');
+            const led = document.getElementById('statusLed');
+            const statusValue = document.getElementById('statusValue');
+
+            // Set checking state with yellow LED
+            indicator.classList.remove('offline');
+            indicator.classList.add('checking');
+            led.classList.remove('offline');
+            led.classList.add('checking');
+            statusValue.textContent = 'Pinging...';
+            statusValue.className = 'status-value checking';
+
+            try {
+                // DNS resolution check via Google DNS API
+                const dnsResponse = await fetch(
+                    `https://dns.google/resolve?name=${SERVER_ADDRESS}`,
+                    { signal: AbortSignal.timeout(8000) }
+                );
+                const dnsData = await dnsResponse.json();
+                
+                if (dnsData.Answer && dnsData.Answer.length > 0) {
+                    setOnlineStatus();
+                } else {
+                    setOfflineStatus();
+                }
+            } catch (error) {
+                console.error('DNS check failed:', error);
+                setOfflineStatus();
+            }
+        }
+
+        function setOnlineStatus() {
+            const indicator = document.getElementById('statusIndicator');
+            const led = document.getElementById('statusLed');
+            const statusValue = document.getElementById('statusValue');
+
+            indicator.classList.remove('offline', 'checking');
+            led.classList.remove('offline', 'checking');
+            statusValue.classList.remove('offline', 'checking');
+            statusValue.textContent = 'Online';
+        }
+
+        function setOfflineStatus() {
+            const indicator = document.getElementById('statusIndicator');
+            const led = document.getElementById('statusLed');
+            const statusValue = document.getElementById('statusValue');
+
+            indicator.classList.remove('checking');
+            indicator.classList.add('offline');
+            led.classList.remove('checking');
+            led.classList.add('offline');
+            statusValue.classList.remove('checking');
+            statusValue.classList.add('offline');
+            statusValue.textContent = 'Offline';
+        }
+
+        // Initial check and set interval
+        checkServerStatus();
+        setInterval(checkServerStatus, CHECK_INTERVAL);
     </script>
+
+    <!-- Server Status Sidebar -->
+    <div class="server-sidebar" id="serverSidebar">
+        <button class="sidebar-toggle-btn" onclick="toggleSidebar()">
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+        </button>
+        <div class="sidebar-content">
+            <div class="server-card">
+                <div class="status-indicator checking" id="statusIndicator">
+                    <div class="status-led checking" id="statusLed"></div>
+                </div>
+                <div class="status-text">
+                    <span class="status-label">Hytale</span>
+                    <span class="status-value checking" id="statusValue">Pinging...</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
