@@ -1,0 +1,113 @@
+.couch-scene {
+    position: relative;
+    width: 520px;
+    height: 320px;
+    margin: 0 auto;
+}
+
+.couch-svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 220px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+}
+
+.button-wrapper {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: sitting-idle 4s ease-in-out infinite;
+}
+
+@keyframes sitting-idle {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0) rotate(-0.5deg);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-2px) rotate(0.5deg);
+    }
+}
+
+.button-shadow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 12px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(3px);
+}
+
+.discord-button {
+    background: linear-gradient(145deg, #6a75f5 0%, #5865F2 50%, #4752c4 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 15px rgba(88, 101, 242, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.discord-button:hover {
+    background: linear-gradient(145deg, #7580f7 0%, #6a75f5 50%, #5865F2 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 8px 25px rgba(88, 101, 242, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.discord-button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow:
+        0 2px 8px rgba(88, 101, 242, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.discord-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    fill: currentColor;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .couch-scene {
+        width: 360px;
+        height: 280px;
+    }
+
+    .couch-svg {
+        width: 300px;
+        height: 180px;
+    }
+
+    .button-wrapper {
+        top: 55px;
+    }
+
+    .discord-button {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}

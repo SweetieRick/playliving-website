@@ -1,0 +1,92 @@
+/* Navbar CSS */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #1a1a1a;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* Anchor items to the left */
+    border-radius: 25px;
+    padding: 0 5px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 175px;
+    border: 1px solid #333;
+    z-index: 1000;
+    overflow: visible;
+    /* Allow toggle button to remain visible */
+}
+
+/* Shrink width causes the arrow button to slide left */
+.navbar.collapsed {
+    width: 50px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-left: 10px;
+    width: 120px;
+    transition: opacity 0.2s, transform 0.3s;
+    overflow: hidden;
+    /* Hide links when collapsed */
+}
+
+.navbar.collapsed .nav-links {
+    opacity: 0;
+    transform: translateX(-20px);
+    pointer-events: none;
+    width: 0;
+    padding-left: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.home-btn svg {
+    fill: #2ecc71;
+    width: 24px;
+    height: 24px;
+}
+
+.folder-btn svg {
+    fill: #ffffff;
+    width: 24px;
+    height: 24px;
+}
+
+.github-btn svg {
+    fill: #ffffff;
+    width: 24px;
+    height: 24px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    flex-shrink: 0;
+    /* Prevents button from squishing */
+}
+
+.toggle-btn svg {
+    fill: #888;
+    width: 18px;
+    transition: transform 0.3s;
+}
+
+/* Arrow rotation logic */
+.navbar.collapsed .toggle-btn svg {
+    transform: rotate(180deg);
+}
